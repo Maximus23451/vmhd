@@ -1,58 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MHD - Macro Hard Doors</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHD Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url('https://picsum.photos/1920/1080') fixed;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(20, 20, 20, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            border-bottom: 1px solid #404040;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #7a7a7a;
+        }
+
+        .content {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-section {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid #404040;
+        }
+
+        h1 {
+            color: #7a7a7a;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .project-status {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            color: #7a7a7a;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #404040;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #505050;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #7a7a7a;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Macro Hard Doors Logo">
-    </div>
     <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#contribute">CONTRIBUTE</a>
+        </div>
+        <div>© 2025 MHD</div>
     </nav>
-  </header>
 
-  <main>
-    <!-- Home Content -->
-    <section class="home-content">
-      <h1>Our projects are under development.</h1>
-      <p>🚧 Our projects are under development. 🚧</p>
-      <a href="#" class="btn">OUR PROJECTS</a>
-    </section>
+    <div class="content">
+        <div class="about-section">
+            <h1>ABOUT</h1>
+            <p>Admin, Hec Doing It Sileeway.</p>
+            <p>Download the Vizega project</p>
+            <p>More than 1/20 Group Website Are the Vizega project</p>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
 
-    <!-- About Content -->
-    <section class="about-content">
-      <h1>ABOUT MHD</h1>
-      <p>Admin, He's Doing It Sideways.</p>
-      <p><a href="#">Download the Vizsga project</a></p>
-      <p><a href="#">Macro Hard Doors Website for the Vizsga project</a></p>
-      <p>🚧 Coming Soon! 🚧</p>
-    </section>
-  </main>
-
-  <footer>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-    <div class="social-icons">
-      <a href="#"><img src="play-icon.png" alt="Play"></a>
-      <a href="#"><img src="pause-icon.png" alt="Pause"></a>
-      <a href="#"><img src="rewind-icon.png" alt="Rewind"></a>
-      <a href="#"><img src="settings-icon.png" alt="Settings"></a>
+        <div class="project-status">
+            # Our projects are under development #1
+        </div>
     </div>
-    <p>Copyright © 2025 MHD</p>
-  </footer>
 
-  <script src="scripts.js"></script>
+    <footer>
+        <p>For Online Search!</p>
+        <p>NUM: ABOUT</p>
+        <p>Copyright © 2025 MHD</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamic copyright year
+        document.querySelector('footer p:last-child').innerHTML = 
+            `Copyright © ${new Date().getFullYear()} MHD`;
+    </script>
 </body>
 </html>
