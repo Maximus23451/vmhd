@@ -2263,11 +2263,23 @@ canvas#alien {
 
 /* ------------------------------------- */
 
-.mbYTP_wrapper {
+/* .mbYTP_wrapper {
     z-index: -30 !important;
     left: 0 !important;
     width: 100vw !important;
     min-width: 0 !important;
+} */
+
+/* New Static Background */
+#bgndImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('MHD3.png') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
 }
 
 /* ------------------------------------- */
