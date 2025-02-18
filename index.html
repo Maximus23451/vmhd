@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MHD Projects</title>
     <style>
+        /* Previous styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -71,6 +72,24 @@
             border: 1px solid #404040;
         }
 
+        .download-versions {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .version-card {
+            background: rgba(40, 40, 40, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #505050;
+        }
+
+        .version-title {
+            color: #7a7a7a;
+            margin-bottom: 1rem;
+        }
+
         h1 {
             color: #7a7a7a;
             margin-bottom: 1rem;
@@ -93,6 +112,7 @@
             text-decoration: none;
             margin-top: 1rem;
             transition: background 0.3s;
+            cursor: pointer;
         }
 
         .download-btn:hover {
@@ -117,25 +137,26 @@
             <a data-target="home">HOME</a>
             <a data-target="about">ABOUT</a>
             <a data-target="contribute">CONTRIBUTE</a>
+            <a data-target="downloads" style="display: none;">DOWNLOADS</a>
         </div>
-        <!-- <div>© 2025 MHD</div> -->
+        <div>© 2025 MHD</div>
     </nav>
 
     <!-- Content Sections -->
     <section id="home" class="content-section active">
         <div class="project-status">
             <h1>OUR PROJECTS</h1>
-            <p>🚧 Our projects are under development 🚧</p>
+            <p># Our projects are under development #1</p>
         </div>
     </section>
 
     <section id="about" class="content-section">
         <div class="about-section">
             <h1>ABOUT</h1>
-            <p></p>
+            <p>Admin, Hec Doing It Sileeway.</p>
             <p>Download the Vizega project</p>
-            <p></p>
-            <a href="#" class="download-btn">Download Now</a>
+            <p>More than 1/20 Group Website Are the Vizega project</p>
+            <button class="download-btn">Download Now</button>
         </div>
     </section>
 
@@ -147,14 +168,40 @@
         </div>
     </section>
 
+    <!-- New Downloads Section -->
+    <section id="downloads" class="content-section">
+        <div class="about-section">
+            <h1>DOWNLOAD VERSIONS</h1>
+            <div class="download-versions">
+                <div class="version-card">
+                    <h3 class="version-title">Stable Release (v1.0.0)</h3>
+                    <p>Recommended for most users</p>
+                    <button class="download-btn version-download" data-version="stable">Download Stable</button>
+                </div>
+                
+                <div class="version-card">
+                    <h3 class="version-title">Beta Release (v1.1.0-beta)</h3>
+                    <p>Preview upcoming features</p>
+                    <button class="download-btn version-download" data-version="beta">Download Beta</button>
+                </div>
+                
+                <div class="version-card">
+                    <h3 class="version-title">Legacy Version (v0.9.5)</h3>
+                    <p>Previous stable version</p>
+                    <button class="download-btn version-download" data-version="legacy">Download Legacy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>🧰</p>
-        <p>🧰</p>
+        <p>For Online Search!</p>
+        <p>NUM: ABOUT</p>
         <p>Copyright © 2025 MHD</p>
     </footer>
 
     <script>
-        // Handle content switching
+        // Navigation handling
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -169,10 +216,10 @@
             });
         });
 
-        // Handle initial page load
+        // Initial page load handling
         window.addEventListener('load', () => {
             const hash = window.location.hash.substring(1);
-            const validSections = ['home', 'about', 'contribute'];
+            const validSections = ['home', 'about', 'contribute', 'downloads'];
             
             if (validSections.includes(hash)) {
                 document.querySelectorAll('.content-section').forEach(section => {
@@ -182,25 +229,44 @@
             }
         });
 
-        // Download button functionality
+        // Download page redirect
         document.querySelector('.download-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            
-            const dummyContent = "This is a placeholder download file.\n\nVizega Project Preview";
-            const blob = new Blob([dummyContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Vizega_Project_Preview.txt';
-            document.body.appendChild(a);
-            a.click();
-            
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('downloads').classList.add('active');
+            history.pushState(null, null, '#downloads');
         });
 
-        // Update copyright year
+        // Version download handling
+        document.querySelectorAll('.version-download').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const version = this.getAttribute('data-version');
+                
+                // Replace with actual file paths
+                const files = {
+                    stable: {name: 'Vizega_Stable.zip', content: 'Stable version content'},
+                    beta: {name: 'Vizega_Beta.zip', content: 'Beta version content'},
+                    legacy: {name: 'Vizega_Legacy.zip', content: 'Legacy version content'}
+                };
+
+                const blob = new Blob([files[version].content], { type: 'application/zip' });
+                const url = window.URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = files[version].name;
+                document.body.appendChild(a);
+                a.click();
+                
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            });
+        });
+
+        // Copyright year update
         document.querySelector('footer p:last-child').innerHTML = 
             `Copyright © ${new Date().getFullYear()} MHD`;
     </script>
