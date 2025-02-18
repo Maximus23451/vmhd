@@ -6,30 +6,70 @@
     <title>MHD - Macro Hard Doors</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
+            font-family: 'Arial', sans-serif;
+            background-color: #282a36; /* Dark background color */
+            color: #f8f8f2; /* Light text color */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
+
         .header {
             text-align: center;
-            font-size: 24px;
+            padding: 20px;
+            background-color: #44475a;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info {
             margin-bottom: 20px;
         }
-        .info {
-            margin-bottom: 10px;
-        }
+
         .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #50fa7b; /* Green button color */
+            color: #000;
+            text-align: center;
             text-decoration: none;
             border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
         }
+
+        .button:hover {
+            background-color: #6272a4; /* Hover effect */
+            color: #fff;
+        }
+
         .footer {
-            margin-top: 20px;
             text-align: center;
-            font-size: 14px;
+            padding: 10px;
+            background-color: #44475a;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #bd93f9;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -39,18 +79,18 @@
         <p>Admin, He's Doing It Sideways.</p>
     </div>
 
-    <div class="info">
-        <p>🚧 Our projects are under development. 🚧</p>
-    </div>
+    <div class="content">
+        <div class="info">
+            <p>🚧 Our projects are under development. 🚧</p>
+        </div>
 
-    <div class="actions">
-        <a href="#" class="button">Our Projects</a><br>
-        <a href="#" class="button">Download the Vizsga Project</a><br>
+        <a href="#" class="button">Our Projects</a>
+        <a href="#" class="button">Download the Vizsga Project</a>
         <a href="#" class="button">Macro Hard Doors Website for the Vizsga Project</a>
-    </div>
 
-    <div class="info">
-        <p>🚧 Coming Soon! 🚧</p>
+        <div class="info">
+            <p>🚧 Coming Soon! 🚧</p>
+        </div>
     </div>
 
     <div class="footer">
