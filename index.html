@@ -40,18 +40,24 @@
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
             color: #7a7a7a;
         }
 
-        .content {
+        .content-section {
+            display: none;
             margin-top: 80px;
             padding: 2rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .content-section.active {
+            display: block;
         }
 
         .about-section {
@@ -101,14 +107,22 @@
 <body>
     <nav>
         <div class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#contribute">CONTRIBUTE</a>
+            <a data-target="home">HOME</a>
+            <a data-target="about">ABOUT</a>
+            <a data-target="contribute">CONTRIBUTE</a>
         </div>
         <div>© 2025 MHD</div>
     </nav>
 
-    <div class="content">
+    <!-- Content Sections -->
+    <section id="home" class="content-section active">
+        <div class="project-status">
+            <h1>OUR PROJECTS</h1>
+            <p># Our projects are under development #1</p>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
         <div class="about-section">
             <h1>ABOUT</h1>
             <p>Admin, Hec Doing It Sileeway.</p>
@@ -116,11 +130,15 @@
             <p>More than 1/20 Group Website Are the Vizega project</p>
             <a href="#" class="download-btn">Download Now</a>
         </div>
+    </section>
 
-        <div class="project-status">
-            # Our projects are under development #1
+    <section id="contribute" class="content-section">
+        <div class="about-section">
+            <h1>CONTRIBUTE</h1>
+            <p>Contribution information will be available soon.</p>
+            <p>Stay tuned for updates!</p>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>For Online Search!</p>
@@ -129,17 +147,39 @@
     </footer>
 
     <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Handle content switching
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+                const target = e.target.getAttribute('data-target');
+                
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
                 });
+
+                // Show target section
+                document.getElementById(target).classList.add('active');
+
+                // Update URL hash without scrolling
+                history.pushState(null, null, `#${target}`);
             });
         });
 
-        // Dynamic copyright year
+        // Handle initial page load based on hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            const validSections = ['home', 'about', 'contribute'];
+            
+            if (validSections.includes(hash)) {
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(hash).classList.add('active');
+            }
+        });
+
+        // Update copyright year
         document.querySelector('footer p:last-child').innerHTML = 
             `Copyright © ${new Date().getFullYear()} MHD`;
     </script>
