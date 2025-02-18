@@ -1,0 +1,261 @@
+|---SW1_START---|
+
+vlan 10
+name USER1_VLAN
+exit
+
+ vlan 20
+name HR_VLAN
+ exit
+
+vlan 30
+ name VOICE_VLAN
+ exit
+
+vlan 40
+name TEST_VLAN
+ exit
+
+vlan 150
+name ADMIN_VLAN
+exit
+
+vlan 300
+name SCAM_VLAN
+exit
+
+
+interface Vlan10
+ip address 172.17.0.1 255.255.192.0
+ no shutdown
+ex
+
+
+interface Vlan20
+ip address 172.17.64.1 255.255.224.0
+no shutdown
+ex
+
+
+interface Vlan30
+ip address 172.17.96.1 255.255.254.0
+no shutdown
+ex
+
+
+interface Vlan40
+ip address 172.17.98.1 255.255.255.128
+no shutdown
+ex
+
+
+interface Vlan150
+ip address 172.17.99.1 255.255.255.224
+no shutdown
+ex
+
+
+interface Vlan300
+ip address 172.17.99.161 255.255.255.240
+no shutdown
+ex
+
+
+
+
+For the link between SW1 and SW2:
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,150,300
+no shutdown
+
+interface range fastEthernet 0/1 - 3
+channel-group 1 mode on
+no shutdown
+
+For the link between SW1 and SW3:
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,150,300
+no shutdown
+
+interface range fastEthernet 0/4 - 6
+channel-group 2 mode on
+no shutdown
+
+
+
+|---SW2_START---|
+
+vlan 10
+ name USER1_VLAN
+exit
+
+vlan 20
+name HR_VLAN
+exit
+
+vlan 30
+name VOICE_VLAN
+exit
+
+vlan 40
+name TEST_VLAN
+exit
+
+vlan 150
+name ADMIN_VLAN
+ exit
+
+vlan 300
+name SCAM_VLAN
+exit
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,150,300
+no shutdown
+
+interface range fastEthernet 0/1 - 3
+channel-group 1 mode on
+no shutdown
+
+
+|---SW3_START---|
+
+
+vlan 10
+name USER1_VLAN
+exit
+
+vlan 20
+name HR_VLAN
+exit
+
+vlan 30
+name VOICE_VLAN
+exit
+
+vlan 40
+name TEST_VLAN
+exit
+
+vlan 150
+name ADMIN_VLAN
+exit
+
+vlan 300
+name SCAM_VLAN
+exit
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,150,300
+ no shutdown
+
+interface range fastEthernet 0/4 - 6
+channel-group 1 mode on
+ no shutdown
+
+
+
+
+|---PT_Router_START---|
+
+interface GigabitEthernet0/0.10
+encapsulation dot1Q 10
+ip address 172.16.0.1 255.255.0.0
+no shutdown
+
+interface GigabitEthernet0/0.20
+encapsulation dot1Q 20
+ip address 172.17.96.1 255.255.254.0
+no shutdown
+
+interface GigabitEthernet0/0.30
+encapsulation dot1Q 30
+ip address 172.17.98.1 255.255.255.128
+no shutdown
+
+interface GigabitEthernet0/0.40
+encapsulation dot1Q 40
+ip address 172.17.98.129 255.255.255.128
+no shutdown
+
+interface GigabitEthernet0/0.150
+encapsulation dot1Q 150
+ip address 172.17.99.1 255.255.255.224
+no shutdown
+
+interface GigabitEthernet0/0.300
+encapsulation dot1Q 300
+ip address 172.17.99.161 255.255.255.240
+no shutdown
+
+router ospf 2048
+network 172.16.0.0 0.0.255.255 area 0
+network 172.17.0.0 0.0.63.255 area 0
+network 172.17.64.0 0.0.31.255 area 0
+network 172.17.96.0 0.0.254.255 area 0
+network 172.17.98.0 0.0.0.127 area 0
+network 172.17.98.128 0.0.0.127 area 0
+network 172.17.99.0 0.0.0.63 area 0
+network 172.17.99.160 0.0.0.15 area 0
+
+
+|---ISR4331_START---|
+
+interface GigabitEthernet0/1/0
+ip address 172.17.0.1 255.255.192.0
+no shutdown
+
+interface GigabitEthernet0/1/1
+ip address 172.17.64.1 255.255.224.0
+no shutdown
+
+router ospf 2048
+network 172.17.0.0 0.0.63.255 area 0
+network 172.17.64.0 0.0.31.255 area 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
