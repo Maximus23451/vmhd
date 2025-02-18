@@ -17,6 +17,8 @@
                         url('https://picsum.photos/1920/1080') fixed;
             color: #e0e0e0;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         nav {
@@ -54,6 +56,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            flex: 1;
         }
 
         .content-section.active {
@@ -102,6 +105,10 @@
             color: #7a7a7a;
             margin-top: auto;
         }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
@@ -111,7 +118,7 @@
             <a data-target="about">ABOUT</a>
             <a data-target="contribute">CONTRIBUTE</a>
         </div>
-        <div>© 2025 MHD</div>
+        <!-- <div>© 2025 MHD</div> -->
     </nav>
 
     <!-- Content Sections -->
@@ -125,9 +132,9 @@
     <section id="about" class="content-section">
         <div class="about-section">
             <h1>ABOUT</h1>
-            <p>Stay tuned for updates!</p>
-            <p>🧰</p>
-            <p>🧰</p>
+            <p></p>
+            <p>Download the Vizega project</p>
+            <p></p>
             <a href="#" class="download-btn">Download Now</a>
         </div>
     </section>
@@ -153,20 +160,16 @@
                 e.preventDefault();
                 const target = e.target.getAttribute('data-target');
                 
-                // Hide all content sections
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.remove('active');
                 });
 
-                // Show target section
                 document.getElementById(target).classList.add('active');
-
-                // Update URL hash without scrolling
                 history.pushState(null, null, `#${target}`);
             });
         });
 
-        // Handle initial page load based on hash
+        // Handle initial page load
         window.addEventListener('load', () => {
             const hash = window.location.hash.substring(1);
             const validSections = ['home', 'about', 'contribute'];
@@ -177,6 +180,24 @@
                 });
                 document.getElementById(hash).classList.add('active');
             }
+        });
+
+        // Download button functionality
+        document.querySelector('.download-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const dummyContent = "This is a placeholder download file.\n\nVizega Project Preview";
+            const blob = new Blob([dummyContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Vizega_Project_Preview.txt';
+            document.body.appendChild(a);
+            a.click();
+            
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
         });
 
         // Update copyright year
