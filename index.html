@@ -176,21 +176,21 @@
             <h1>DOWNLOAD VERSIONS</h1>
             <div class="download-versions">
                 <div class="version-card">
-                    <h3 class="version-title">Stable Release (v1.0.0)</h3>
+                    <h3 class="version-title">Latest Stable Release (v5.0 Release)</h3>
                     <p>Recommended for most users</p>
-                    <button class="download-btn version-download" data-version="stable">Download Stable</button>
+                    <button class="download-btn version-download" data-version="stable">Download Stable(Latest ver.)</button>
                 </div>
                 
                 <div class="version-card">
-                    <h3 class="version-title">Beta Release (v1.1.0-beta)</h3>
+                    <h3 class="version-title">Previus Stable Release (v4.0 Release)</h3>
                     <p>Preview upcoming features</p>
-                    <button class="download-btn version-download" data-version="beta">Download Beta</button>
+                    <button class="download-btn version-download" data-version="beta">Download Beta(Previus ver.)</button>
                 </div>
                 
                 <div class="version-card">
-                    <h3 class="version-title">Legacy Version (v0.9.5)</h3>
+                    <h3 class="version-title">First Version (v1.0 Release)</h3>
                     <p>Previous stable version</p>
-                    <button class="download-btn version-download" data-version="legacy">Download Legacy</button>
+                    <button class="download-btn version-download" data-version="legacy">Download Legacy(First ver.)</button>
                 </div>
             </div>
         </div>
@@ -249,9 +249,9 @@
                 
                 // Replace with actual file paths
                 const files = {
-                    stable: {name: 'Vizega_Stable.zip', content: 'Stable version content'},
-                    beta: {name: 'Vizega_Beta.zip', content: 'Beta version content'},
-                    legacy: {name: 'Vizega_Legacy.zip', content: 'Legacy version content'}
+                    stable: {name: 'PROJECT_V5.0.pkt', content: 'Stable version content'},
+                    beta: {name: 'PROJECT_V4.0.pkt', content: 'Beta version content'},
+                    legacy: {name: 'PROJECT_V1.0.pkt', content: 'Legacy version content'}
                 };
 
                 const blob = new Blob([files[version].content], { type: 'application/zip' });
