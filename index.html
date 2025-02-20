@@ -160,6 +160,12 @@
   <section id="downloads" class="content-section">
     <div class="about-section">
       <h1>DOWNLOAD VERSIONS</h1>
+        <!-- New download entry for Newest Unstable Version -->
+      <div class="version-card">
+        <h3 class="version-title">Newest Unstable Version</h3>
+        <p>This is the latest unstable build for testing purposes</p>
+        <button class="download-btn version-download" data-version="unstable">Download Unstable</button>
+      </div>
       <div class="download-versions">
         <div class="version-card">
           <h3 class="version-title">Latest Stable Release (v5.0 Release)</h3>
@@ -175,6 +181,12 @@
           <h3 class="version-title">First Version (v1.0 Release)</h3>
           <p>This is the very first version of the project</p>
           <button class="download-btn version-download" data-version="legacy">Download Legacy (First ver.)</button>
+        </div>
+        <!-- New download entry for The Routing Table -->
+        <div class="version-card">
+          <h3 class="version-title">The Routing Table</h3>
+          <p>Download the latest routing table configuration</p>
+          <button class="download-btn version-download" data-version="routing">Download Routing Table</button>
         </div>
       </div>
     </div>
@@ -228,11 +240,13 @@
         e.preventDefault();
         const version = this.getAttribute('data-version');
 
-        // File URLs are directly set as the files are in the same directory as the HTML file.
+        // File URLs; ensure these files exist in the same directory as this HTML file.
         const fileUrls = {
           stable: 'PROJECT_V5.0.pkt',
           beta: 'PROJECT_V4.0.pkt',
-          legacy: 'PROJECT_V1.0.pkt'
+          legacy: 'PROJECT_V1.0.pkt',
+          unstable: 'PROJECT_V5.2NAT.2.pkt',
+          routing: 'p_ip_addresses.xlsx '
         };
 
         fetch(fileUrls[version])
