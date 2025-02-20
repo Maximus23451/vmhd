@@ -192,7 +192,6 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const target = e.target.getAttribute('data-target');
-        
         document.querySelectorAll('.content-section').forEach(section => {
           section.classList.remove('active');
         });
@@ -205,7 +204,6 @@
     window.addEventListener('load', () => {
       const hash = window.location.hash.substring(1);
       const validSections = ['home', 'about', 'contribute', 'downloads'];
-      
       if (validSections.includes(hash)) {
         document.querySelectorAll('.content-section').forEach(section => {
           section.classList.remove('active');
@@ -230,11 +228,11 @@
         e.preventDefault();
         const version = this.getAttribute('data-version');
 
-        // Replace with actual file URLs on your server
+        // File URLs are directly set as the files are in the same directory as the HTML file.
         const fileUrls = {
-          stable: 'files/PROJECT_V5.0.pkt',
-          beta: 'files/PROJECT_V4.0.pkt',
-          legacy: 'files/PROJECT_V1.0.pkt'
+          stable: 'PROJECT_V5.0.pkt',
+          beta: 'PROJECT_V4.0.pkt',
+          legacy: 'PROJECT_V1.0.pkt'
         };
 
         fetch(fileUrls[version])
@@ -248,7 +246,6 @@
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            // Extract file name from URL
             a.download = fileUrls[version].split('/').pop();
             document.body.appendChild(a);
             a.click();
