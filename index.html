@@ -1,279 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHD Projects</title>
-    <meta property="og:description" content="💻A híres MHD csapat📈" />
-    <meta property="og:image" content="MHD3.png"/>
-    <link rel="icon" type="image/png" href="MHD3.png" />
-    <style>
-        /* Previous styles remain the same */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://wallpapercg.com/media/ts_orig/22899.webp') fixed;
-            background-size: cover;
-            background-position: center;
-            color: #e0e0e0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        nav {
-            background: rgba(20, 20, 20, 0.95);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            border-bottom: 1px solid #404040;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: #7a7a7a;
-        }
-
-        .content-section {
-            display: none;
-            margin-top: 80px;
-            padding: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            flex: 1;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .about-section {
-            background: rgba(30, 30, 30, 0.9);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border: 1px solid #404040;
-        }
-
-        .download-versions {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .version-card {
-            background: rgba(40, 40, 40, 0.9);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #505050;
-        }
-
-        .version-title {
-            color: #7a7a7a;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            color: #7a7a7a;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .project-status {
-            text-align: center;
-            font-size: 1.2rem;
-            margin: 2rem 0;
-            color: #7a7a7a;
-        }
-
-        .download-btn {
-            display: inline-block;
-            background: #404040;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: background 0.3s;
-            cursor: pointer;
-        }
-
-        .download-btn:hover {
-            background: #505050;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #7a7a7a;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MHD Projects</title>
+  <meta property="og:description" content="💻A híres MHD csapat📈" />
+  <meta property="og:image" content="MHD3.png"/>
+  <link rel="icon" type="image/png" href="MHD3.png" />
+  <style>
+    /* Previous styles remain the same */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://wallpapercg.com/media/ts_orig/22899.webp') fixed;
+      background-size: cover;
+      background-position: center;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      background: rgba(20, 20, 20, 0.95);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      border-bottom: 1px solid #404040;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    .nav-links a:hover {
+      color: #7a7a7a;
+    }
+    .content-section {
+      display: none;
+      margin-top: 80px;
+      padding: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      flex: 1;
+    }
+    .content-section.active {
+      display: block;
+    }
+    .about-section {
+      background: rgba(30, 30, 30, 0.9);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      border: 1px solid #404040;
+    }
+    .download-versions {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .version-card {
+      background: rgba(40, 40, 40, 0.9);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #505050;
+    }
+    .version-title {
+      color: #7a7a7a;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      color: #7a7a7a;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    .project-status {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 2rem 0;
+      color: #7a7a7a;
+    }
+    .download-btn {
+      display: inline-block;
+      background: #404040;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background: #505050;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #7a7a7a;
+      margin-top: auto;
+    }
+    footer p {
+      margin: 0.5rem 0;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-links">
-            <a data-target="home">HOME</a>
-            <a data-target="about">ABOUT</a>
-            <a data-target="contribute">CONTRIBUTE</a>
-            <a data-target="downloads" style="display: none;">DOWNLOADS</a>
+  <nav>
+    <div class="nav-links">
+      <a data-target="home">HOME</a>
+      <a data-target="about">ABOUT</a>
+      <a data-target="contribute">CONTRIBUTE</a>
+      <a data-target="downloads" style="display: none;">DOWNLOADS</a>
+    </div>
+    <!-- <div>© 2025 MHD</div> -->
+  </nav>
+
+  <!-- Content Sections -->
+  <section id="home" class="content-section active">
+    <div class="project-status">
+      <h1>OUR PROJECTS</h1>
+      <p>🚧 Our projects is under development 🚧</p>
+    </div>
+  </section>
+
+  <section id="about" class="content-section">
+    <div class="about-section">
+      <h1>ABOUT</h1>
+      <p></p>
+      <p>Download our project</p>
+      <p></p>
+      <button class="download-btn">Download Now</button>
+    </div>
+  </section>
+
+  <section id="contribute" class="content-section">
+    <div class="about-section">
+      <h1>CONTRIBUTE</h1>
+      <p>Contribution information will be available soon.</p>
+      <p>Stay tuned for updates!</p>
+    </div>
+  </section>
+
+  <!-- New Downloads Section -->
+  <section id="downloads" class="content-section">
+    <div class="about-section">
+      <h1>DOWNLOAD VERSIONS</h1>
+      <div class="download-versions">
+        <div class="version-card">
+          <h3 class="version-title">Latest Stable Release (v5.0 Release)</h3>
+          <p>This is the newest version</p>
+          <button class="download-btn version-download" data-version="stable">Download Stable (Latest ver.)</button>
         </div>
-        <!-- <div>© 2025 MHD</div> -->
-    </nav>
-
-    <!-- Content Sections -->
-    <section id="home" class="content-section active">
-        <div class="project-status">
-            <h1>OUR PROJECTS</h1>
-            <p>🚧 Our projects is under development 🚧</p>
+        <div class="version-card">
+          <h3 class="version-title">Previous Stable Release (v4.0 Release)</h3>
+          <p>This is the Previous Stable version of our work</p>
+          <button class="download-btn version-download" data-version="beta">Download Beta (Previous ver.)</button>
         </div>
-    </section>
-
-    <section id="about" class="content-section">
-        <div class="about-section">
-            <h1>ABOUT</h1>
-            <p></p>
-            <p>Download our project</p>
-            <p></p>
-            <button class="download-btn">Download Now</button>
+        <div class="version-card">
+          <h3 class="version-title">First Version (v1.0 Release)</h3>
+          <p>This is the very first version of the project</p>
+          <button class="download-btn version-download" data-version="legacy">Download Legacy (First ver.)</button>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="contribute" class="content-section">
-        <div class="about-section">
-            <h1>CONTRIBUTE</h1>
-            <p>Contribution information will be available soon.</p>
-            <p>Stay tuned for updates!</p>
-        </div>
-    </section>
+  <footer>
+    <p></p>
+    <p></p>
+    <p>Copyright © 2025 MHD</p>
+  </footer>
 
-    <!-- New Downloads Section -->
-    <section id="downloads" class="content-section">
-        <div class="about-section">
-            <h1>DOWNLOAD VERSIONS</h1>
-            <div class="download-versions">
-                <div class="version-card">
-                    <h3 class="version-title">Latest Stable Release (v5.0 Release)</h3>
-                    <p>This is the newest version</p>
-                    <button class="download-btn version-download" data-version="stable">Download Stable (Latest ver.)</button>
-                </div>
-                
-                <div class="version-card">
-                    <h3 class="version-title">Previus Stable Release (v4.0 Release)</h3>
-                    <p>This is the Previus Stable version of our work</p>
-                    <button class="download-btn version-download" data-version="beta">Download Beta (Previus ver.)</button>
-                </div>
-                
-                <div class="version-card">
-                    <h3 class="version-title">First Version (v1.0 Release)</h3>
-                    <p>This is the very first version of the project</p>
-                    <button class="download-btn version-download" data-version="legacy">Download Legacy (First ver.)</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p></p>
-        <p></p>
-        <p>Copyright © 2025 MHD</p>
-    </footer>
-
-    <script>
-        // Navigation handling
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = e.target.getAttribute('data-target');
-                
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-
-                document.getElementById(target).classList.add('active');
-                history.pushState(null, null, `#${target}`);
-            });
+  <script>
+    // Navigation handling
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = e.target.getAttribute('data-target');
+        
+        document.querySelectorAll('.content-section').forEach(section => {
+          section.classList.remove('active');
         });
+        document.getElementById(target).classList.add('active');
+        history.pushState(null, null, `#${target}`);
+      });
+    });
 
-        // Initial page load handling
-        window.addEventListener('load', () => {
-            const hash = window.location.hash.substring(1);
-            const validSections = ['home', 'about', 'contribute', 'downloads'];
-            
-            if (validSections.includes(hash)) {
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(hash).classList.add('active');
+    // Initial page load handling
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      const validSections = ['home', 'about', 'contribute', 'downloads'];
+      
+      if (validSections.includes(hash)) {
+        document.querySelectorAll('.content-section').forEach(section => {
+          section.classList.remove('active');
+        });
+        document.getElementById(hash).classList.add('active');
+      }
+    });
+
+    // Download page redirect
+    document.querySelector('.download-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById('downloads').classList.add('active');
+      history.pushState(null, null, '#downloads');
+    });
+
+    // Version download handling with fetch
+    document.querySelectorAll('.version-download').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const version = this.getAttribute('data-version');
+
+        // Replace with actual file URLs on your server
+        const fileUrls = {
+          stable: 'files/PROJECT_V5.0.pkt',
+          beta: 'files/PROJECT_V4.0.pkt',
+          legacy: 'files/PROJECT_V1.0.pkt'
+        };
+
+        fetch(fileUrls[version])
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
             }
-        });
+            return response.blob();
+          })
+          .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            // Extract file name from URL
+            a.download = fileUrls[version].split('/').pop();
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+          })
+          .catch(error => {
+            console.error('Error downloading the file:', error);
+          });
+      });
+    });
 
-        // Download page redirect
-        document.querySelector('.download-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('downloads').classList.add('active');
-            history.pushState(null, null, '#downloads');
-        });
-
-        // Version download handling
-        document.querySelectorAll('.version-download').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const version = this.getAttribute('data-version');
-                
-                // Replace with actual file paths
-                const files = {
-                    stable: {name: 'PROJECT_V5.0.pkt', content: 'Stable version content'},
-                    beta: {name: 'PROJECT_V4.0.pkt', content: 'Beta version content'},
-                    legacy: {name: 'PROJECT_V1.0.pkt', content: 'Legacy version content'}
-                };
-
-                const blob = new Blob([files[version].content], { type: 'application/zip' });
-                const url = window.URL.createObjectURL(blob);
-                
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = files[version].name;
-                document.body.appendChild(a);
-                a.click();
-                
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-            });
-        });
-
-        // Copyright year update
-        document.querySelector('footer p:last-child').innerHTML = 
-            `Copyright © ${new Date().getFullYear()} MHD`;
-    </script>
+    // Copyright year update
+    document.querySelector('footer p:last-child').innerHTML = 
+      `Copyright © ${new Date().getFullYear()} MHD`;
+  </script>
 </body>
 </html>
