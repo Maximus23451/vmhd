@@ -176,10 +176,10 @@
       <h1>DOWNLOAD VERSIONS</h1>
         <!-- New download entry for Newest Unstable Version -->
 	<div class="version-card">
-        <h3 class="version-title">This download page was not updated since March 2025.</h3>
-        <p>Please do use the new download page. This page is an archive of the past.</p>
-	<button class="download-btn version-download" data-version="web">Website</button>
-      </div>
+ 	   <h3 class="version-title">This download page was not updated since March 2025.</h3>
+  	  <p>Please do use the new download page. This page is an archive of the past.</p>
+   	 <button class="download-btn version-download" data-version="web">Website</button>
+	</div>
       <div class="version-card">
         <h3 class="version-title">Newest Unstable Version(2025.03.18)</h3>
         <p>This is the latest unstable build for testing purposes</p>
@@ -271,12 +271,28 @@
 
 
   // When the Website button is clicked, go to the new download page
-  document
-    .getElementById('website-btn')
-    .addEventListener('click', () => {
-      window.location.href = fileUrls.web;
+document.querySelectorAll('.version-download').forEach(button => {
+    button.addEventListener('click', function() {
+        const version = this.dataset.version;
+        const url = fileUrls[version];
+        
+        if (version === 'web') {
+            // Open website in new tab
+            window.open(url, '_blank');
+            
+            /* Alternatively, open in same tab:
+            window.location.href = url; */
+        } else {
+            // Existing download logic for other versions
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = true;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     });
-
+});
         fetch(fileUrls[version])
           .then(response => {
             if (!response.ok) {
