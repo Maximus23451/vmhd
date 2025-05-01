@@ -175,14 +175,19 @@
     <div class="about-section">
       <h1>DOWNLOAD VERSIONS</h1>
         <!-- New download entry for Newest Unstable Version -->
+	<div class="version-card">
+        <h3 class="version-title">This download page was not updated since March 2025.</h3>
+        <p>Please do use the new download page. This page is an archive of the past.</p>
+	<button class="download-btn version-download" data-version="website">Website</button>
+      </div>
       <div class="version-card">
-        <h3 class="version-title">Newest Unstable Version</h3>
+        <h3 class="version-title">Newest Unstable Version(2025.03.18)</h3>
         <p>This is the latest unstable build for testing purposes</p>
         <button class="download-btn version-download" data-version="unstable">Download Unstable</button>
       </div>
       <div class="download-versions">
         <div class="version-card">
-          <h3 class="version-title">Latest Stable Release (v6.2 Release)</h3>
+          <h3 class="version-title">Latest Stable Release (v6.2 Release)(2025.03.14)</h3>
           <p>This is the newest version</p>
           <button class="download-btn version-download" data-version="stable">Download Stable (Latest ver.)</button>
         </div>
@@ -261,6 +266,7 @@
           legacy: 'PROJECT_V1.0.pkt',
           unstable: '6.2_IPSEC.pkt',
           routing: 'p_ip_addresses.xlsx'
+	  website: 'https://macroharddoors.site/'
         };
 
         fetch(fileUrls[version])
