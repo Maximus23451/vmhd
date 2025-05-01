@@ -220,105 +220,87 @@
   <script>
     // Navigation handling
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = e.target.getAttribute('data-target');
-        document.querySelectorAll('.content-section').forEach(section => {
-          section.classList.remove('active');
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = e.target.getAttribute('data-target');
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(target).classList.add('active');
+            history.pushState(null, null, `#${target}`);
         });
-        document.getElementById(target).classList.add('active');
-        history.pushState(null, null, `#${target}`);
-      });
     });
 
     // Initial page load handling
     window.addEventListener('load', () => {
-      const hash = window.location.hash.substring(1);
-      const validSections = ['home', 'about', 'contribute', 'downloads'];
-      if (validSections.includes(hash)) {
-        document.querySelectorAll('.content-section').forEach(section => {
-          section.classList.remove('active');
-        });
-        document.getElementById(hash).classList.add('active');
-      }
-    });
-
-    // Download page redirect
-    document.querySelector('.download-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById('downloads').classList.add('active');
-      history.pushState(null, null, '#downloads');
-    });
-
-    // Version download handling with fetch
-    document.querySelectorAll('.version-download').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const version = this.getAttribute('data-version');
-
-        // File URLs; ensure these files exist in the same directory as this HTML file.
-        const fileUrls = {
-          stable: 'V6.2--VIZSGA_PROJECT.pkt',
-          beta: 'PROJECT_V5.0.pkt',
-          legacy: 'PROJECT_V1.0.pkt',
-          unstable: '6.2_IPSEC.pkt',
-          routing: 'p_ip_addresses.xlsx',
-	  web: 'https://macroharddoors.site/'
-        };
-
-
-  // When the Website button is clicked, go to the new download page
-document.querySelectorAll('.version-download').forEach(button => {
-    button.addEventListener('click', function() {
-        const version = this.dataset.version;
-        const url = fileUrls[version];
-        
-        if (version === 'web') {
-            // Open website in new tab
-            window.open(url, '_blank');
-            
-            /* Alternatively, open in same tab:
-            window.location.href = url; */
-        } else {
-            // Existing download logic for other versions
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = true;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        const hash = window.location.hash.substring(1);
+        const validSections = ['home', 'about', 'contribute', 'downloads'];
+        if (validSections.includes(hash)) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(hash).classList.add('active');
         }
     });
-});
-        fetch(fileUrls[version])
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
+
+    // File URLs - moved to global scope
+    const fileUrls = {
+        stable: 'V6.2--VIZSGA_PROJECT.pkt',
+        beta: 'PROJECT_V5.0.pkt',
+        legacy: 'PROJECT_V1.0.pkt',
+        unstable: '6.2_IPSEC.pkt',
+        routing: 'p_ip_addresses.xlsx',
+        web: 'https://macroharddoors.site/'
+    };
+
+    // Unified download handler
+    document.querySelectorAll('.version-download').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const version = this.dataset.version;
+            const url = fileUrls[version];
+
+            // Handle web version differently
+            if (version === 'web') {
+                window.open(url, '_blank');
+                return; // Exit early for web version
             }
-            return response.blob();
-          })
-          .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = fileUrls[version].split('/').pop();
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-          })
-          .catch(error => {
-            console.error('Error downloading the file:', error);
-          });
-      });
+
+            // File download logic
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    a.download = url.split('/').pop();
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(downloadUrl);
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    console.error('Error downloading the file:', error);
+                });
+        });
+    });
+
+    // Download page redirect (for other download buttons if needed)
+    document.querySelector('.download-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById('downloads').classList.add('active');
+        history.pushState(null, null, '#downloads');
     });
 
     // Copyright year update
     document.querySelector('footer p:last-child').innerHTML = 
-      `Copyright © ${new Date().getFullYear()} MHD`;
-  </script>
+        `Copyright © ${new Date().getFullYear()} MHD`;
+</script>
 </body>
 </html>
